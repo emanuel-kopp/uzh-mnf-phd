@@ -1,4 +1,4 @@
-#import "uzh_mnf_phd_template.typ": chapter
+#import "@local/uzh-mnf-phd:0.1.0": chapter
 
 #show: chapter.with(
   title: text()[Title of your first chapter, of which maybe a part must be _italic_],
