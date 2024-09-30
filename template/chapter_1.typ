@@ -1,4 +1,4 @@
-#import "@local/uzh-mnf-phd:0.1.0": *
+#import "@local/uzh-mnf-phd:0.1.0": chapter
 
 #show: chapter.with(
   title: text()[Title of your first chapter, of which maybe a part must be _italic_],
@@ -19,8 +19,7 @@
 
 == Introduction
 #lorem(100)
-@Aarssen_1997
-@Barot_et_al_2017
+@Aarssen_1997@Barot_etal_2017
 
 == Materials and Methods
 #lorem(100)
