@@ -9,9 +9,9 @@ license = "MIT"
 description = "Unofficial template for PhD Thesis at MNF at the University of Zurich"
 # homepage = ""
 # repository = ""
-# keywords = ["Dissertation", "phd", "UZH", "MNF", "thesis"]
-categories = ["thesis"]
-# disciplines = ["computer-science"]
+keywords = ["Dissertation", "phd", "UZH", "MNF", "thesis"]
+categories = ["Thesis"]
+disciplines = ["natural-sciences"]
 compiler = "0.11.0"
 # exclude = []
 

@@ -18,8 +18,16 @@
 )
 
 == Introduction
-#lorem(100)
-@Aarssen_1997@Barot_etal_2017
+Cite like this: @Aarssen_1997, or @Aarssen_1997@Barot_etal_2017 for multiple citations. Change citation style in the `main.typ` file.
+
+#line(length: 100%)
+
+Include figures like this:
+#figure(
+  image("../figures/Soya.svg"),
+  caption: [A figure in your Chapter 1], 
+)<figure_1> 
+
 
 == Materials and Methods
 #lorem(100)
