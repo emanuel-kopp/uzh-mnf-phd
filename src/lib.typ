@@ -92,8 +92,6 @@
   affiliations: (),
   header: none,
   abstract: [],
-  bib_file: none,
-  citation_style: "elsevier-harvard",
   chapter,
 ) = {
   set align(left)
@@ -146,7 +144,4 @@
   ])
 
   chapter
-
-  // Set bibliography
-  if bib_file != none {bibliography(bib_file, style: citation_style)}
 }

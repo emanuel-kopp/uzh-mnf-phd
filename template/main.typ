@@ -36,3 +36,8 @@
 
 = Chapter 1
 #include "chapters/chapter_1.typ"
+
+// = Chapter 2
+// #include "chapters/chapter_2.typ"
+
+#bibliography("library.bib", style: "elsevier-harvard")

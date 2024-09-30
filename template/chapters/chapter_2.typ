@@ -20,7 +20,6 @@
 == Introduction
 #lorem(100)
 @Aarssen_1997
-@Barot_et_al_2017
 
 == Materials and Methods
 #lorem(100)
