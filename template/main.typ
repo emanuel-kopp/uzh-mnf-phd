@@ -29,15 +29,15 @@
 // Include the separate files here
 
 = Summary
-#include "summary_eng.typ"
+#include "chapters/summary_eng.typ"
 
 = General Introduction
-#include "general_intro.typ"
+#include "chapters/general_intro.typ"
 
 = Chapter 1
-#include "chapter_1.typ" 
+#include "chapters/chapter_1.typ" 
 
 = Chapter 2
-#include "chapter_2.typ"
+#include "chapters/chapter_2.typ"
 
 #bibliography("library.bib", style: "elsevier-harvard")
