@@ -96,6 +96,9 @@
   show heading: i-figured.reset-counters
   show figure: i-figured.show-figure
 
+  // Number bibliography
+  show bibliography: set heading(numbering: "1.")
+
   body
 }
 
