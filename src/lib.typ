@@ -1,3 +1,8 @@
+// import extrenal packages
+#import "@preview/i-figured:0.2.4"
+
+// Define function for main document
+
 #let main_doc(
   title: "",
   author: "",
@@ -69,11 +74,14 @@
   v(2fr)
   pagebreak()
 
+  // Set heading numbering
+  set heading(numbering: "1.")
+
   // Defining headings
   show heading.where(level: 1): it => {
     pagebreak()
-    set text(weight: "bold", size: 16pt)
-    it.body
+    set text(weight: "bold", size: 14pt)
+    it
     v(1em)
   }
 
@@ -83,21 +91,27 @@
   set align(left)
   set page(numbering: "1", number-align: center)
   set par(leading: 1.5em)
+
+  // apply the show rules (these can be customized)
+  show heading: i-figured.reset-counters
+  show figure: i-figured.show-figure
+
   body
 }
+
+// Define function for chapters
 
 #let chapter(
   title: none,
   authors: (),
   affiliations: (),
-  header: none,
   abstract: [],
   chapter,
 ) = {
   set align(left)
 
   // Write title
-  text(size: 14pt, weight: "bold", title)
+  heading(title)
   v(1em)
 
   let count = authors.len()
@@ -139,9 +153,22 @@
   v(2em)
 
   // Write header
+  let numberingH(c)={
+    return numbering(c.numbering,..counter(heading.where(level: 1)).at(c.location()))
+  }
+  let header = context {
+    let sel = query(selector(heading.where(level: 1)).before(here()))
+    return [#numberingH(sel.last()) #sel.last().body]
+  }
+
   set page(header: align(right)[
     #text(size: 10pt, style: "italic")[#header]
   ])
+
+  // Defaults for figures
+  show figure.caption: set text(10pt)
+  show figure: set block(inset: (top: 0.8em, bottom: 2em))
+  set figure(placement: auto, numbering: "1.1")
 
   chapter
 }
