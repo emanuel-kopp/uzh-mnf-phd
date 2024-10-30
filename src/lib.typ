@@ -99,6 +99,9 @@
   // Number bibliography
   show bibliography: set heading(numbering: "1.")
 
+  // Show table of contents
+  outline(depth: 2, indent: auto)
+
   body
 }
 
