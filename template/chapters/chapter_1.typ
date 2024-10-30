@@ -13,19 +13,20 @@
     (num: 2, name: "Second Affiliation"),
     (num:3, name: "Third Affiliation")
   ),
-  header: "Chapter 1: Short title as header",
+  header: "Short title as header",
   abstract: lorem(100)
 )
 
 == Introduction
-Cite like this: @Aarssen_1997, or @Aarssen_1997@Barot_etal_2017 for multiple citations. Change citation style in the `main.typ` file.
+Cite like this: `@Aarssen_1997`, or `@Aarssen_1997@Barot_etal_2017` for multiple citations (without backticks).
+Change citation style in the `main.typ` file.
 
 #line(length: 100%)
 
-Include figures like this:
+//Include figures like this:
 #figure(
   image("../figures/Soya.svg"),
-  caption: [A figure in your Chapter 1], 
+  caption: [An example figure], 
 )<figure_1> 
 
 
