@@ -18,7 +18,7 @@
 
 == Introduction
 #lorem(100)
-@Aarssen_1997
+@Author_2023
 
 == Materials and Methods
 #lorem(100)
