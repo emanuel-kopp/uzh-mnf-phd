@@ -116,6 +116,7 @@
   authors: (),
   affiliations: (),
   abstract: [],
+  published: none,
   chapter,
 ) = {
   set align(left)
@@ -140,11 +141,20 @@
 
   v(2em)
 
+  if published != none {
+    text()[Published as: ]
+    v(1em)
+    cite(form: "full", published)
+  }
+
+
+  pagebreak()
   set align(center)
   par(justify: true)[
     *Abstract* \
     #abstract
   ]
+  pagebreak()
 
   show heading.where(level: 2): it => {
     v(1em)
