@@ -92,15 +92,19 @@
   set page(numbering: "1", number-align: center)
   set par(leading: 1.5em)
 
-  // apply the show rules (these can be customized)
+  // apply the show rules for figure and table numbering
   show heading: i-figured.reset-counters
   show figure: i-figured.show-figure
+
 
   // Number bibliography
   show bibliography: set heading(numbering: "1.")
 
   // Show table of contents
   outline(depth: 2, indent: auto)
+
+  // Show list of figures and tables
+  // i-figured.outline()
 
   body
 }
@@ -171,10 +175,12 @@
     #text(size: 10pt, style: "italic")[#header]
   ])
 
-  // Defaults for figures
-  show figure.caption: set text(10pt)
+  // Defaults for figures and blocks
+  show figure.caption: set text(9pt, spacing: 2pt)
   show figure: set block(inset: (top: 0.8em, bottom: 2em))
   set figure(placement: auto, numbering: "1.1")
+
+  set block(inset: 1em)
 
   chapter
 }

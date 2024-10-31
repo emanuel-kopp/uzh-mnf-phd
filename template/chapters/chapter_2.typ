@@ -13,7 +13,6 @@
     (num: 2, name: "Second Affiliation"),
     (num:3, name: "Third Affiliation")
   ),
-  header: "Short title as header",
   abstract: lorem(100)
 )
 
