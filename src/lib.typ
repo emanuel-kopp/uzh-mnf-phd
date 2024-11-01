@@ -17,7 +17,7 @@
   set document(author: author, title: title)
   set text(font: "New Computer Modern", lang: "de", size: 11pt)
   set align(center)
-  set page(margin: (left: 2cm, right: 2cm, bottom: 2cm, top: 2cm))
+  set page(margin: auto, header-ascent: 40%)
 
   text(size: 14pt, weight: "bold")[#title]
 
@@ -116,6 +116,7 @@
   authors: (),
   affiliations: (),
   abstract: [],
+  header: none,
   published: none,
   chapter,
 ) = {
@@ -158,7 +159,7 @@
 
   show heading.where(level: 2): it => {
     v(1em)
-    it.body
+    it
     v(1em)
   }
 
@@ -176,9 +177,17 @@
   let numberingH(c)={
     return numbering(c.numbering,..counter(heading.where(level: 1)).at(c.location()))
   }
-  let header = context {
-    let sel = query(selector(heading.where(level: 1)).before(here()))
-    return [#numberingH(sel.last()) #sel.last().body]
+
+  if header == none {
+    header = context {
+      let sel = query(selector(heading.where(level: 1)).before(here()))
+      return [#numberingH(sel.last()) #sel.last().body]
+    } 
+  } else {
+    header = context {
+      let sel = query(selector(heading.where(level: 1)).before(here()))
+      return [#numberingH(sel.last()) #header]
+    }
   }
 
   set page(header: align(right)[
