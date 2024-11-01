@@ -13,7 +13,8 @@
     (num: 2, name: "Second Affiliation"),
     (num:3, name: "Third Affiliation")
   ),
-  abstract: lorem(100)
+  abstract: lorem(100),
+  header: "This chapter has a custom header"
 )
 
 == Introduction
