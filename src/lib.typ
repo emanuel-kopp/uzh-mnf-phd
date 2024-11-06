@@ -11,6 +11,8 @@
   date: "",
   land: "",
   PI_is_head: true,
+  quote: none,
+  quote_author: none,
   body,
 ) = {
   // Set the document's basic properties.
@@ -73,6 +75,9 @@
   text(weight: "bold")[Zürich, #date]
   v(2fr)
   pagebreak()
+
+  if quote != none {align(horizon)[#text(weight: "bold")[#quote]]}
+  if quote_author != none {align(horizon)[#text(style: "italic")[#quote_author]]} 
 
   // Set heading numbering
   set heading(numbering: "1.")
@@ -142,7 +147,7 @@
 
   v(1em)
 
-  set par(first-line-indent: 0em)
+  set par(first-line-indent: 0em, leading: 1.2em)
   for aff in affiliations {
     text()[#aff.num: #aff.name]
     linebreak()

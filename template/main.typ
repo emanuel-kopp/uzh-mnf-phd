@@ -23,7 +23,9 @@
     "Prof. Dr. Last Menber",
   ),
   PI_is_head: true,                 // Define if your head of committee is also your first PI
-  date: "2025"                      // Year of submission
+  date: "2025",                      // Year of submission
+  quote: "You shall not pass!",          // You can add a quote (or a dedication)
+  quote_author: "Gandalf on the bridge in Moria, Lord of the Rings" // What you add as quote will be bold, what you add as quote_author will be italic
 )
 
 // Include the separate files here
