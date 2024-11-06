@@ -36,4 +36,4 @@
 
 #include "chapters/chapter_2.typ"
 
-#bibliography("library.bib", style: "elsevier-harvard")
+#bibliography("library.bib", style: "apa")
