@@ -80,7 +80,7 @@
   // Defining headings
   show heading.where(level: 1): it => {
     pagebreak()
-    set text(weight: "bold", size: 14pt)
+    set text(weight: "bold", size: 13pt)
     it
     v(1em)
   }
@@ -90,7 +90,6 @@
   set par(justify: true)
   set align(left)
   set page(numbering: "1", number-align: center)
-  set par(leading: 1.5em)
 
   // apply the show rules for figure and table numbering
   show heading: i-figured.reset-counters
@@ -101,10 +100,18 @@
   show bibliography: set heading(numbering: "1.")
 
   // Show table of contents
+  let in-outline = state("in-outline", false)
+  show outline: it => {
+    in-outline.update(true)
+    it
+    in-outline.update(false)
+  }
+  let flex-caption(long, short) = context if in-outline.get() { short } else { long }
   outline(depth: 2, indent: auto)
+  // outline(target: figure)
 
   // Show list of figures and tables
-  // i-figured.outline()
+  i-figured.outline()
 
   body
 }
@@ -135,6 +142,7 @@
 
   v(1em)
 
+  set par(first-line-indent: 0em)
   for aff in affiliations {
     text()[#aff.num: #aff.name]
     linebreak()
@@ -150,9 +158,11 @@
 
 
   pagebreak()
-  set align(center)
-  par(justify: true)[
-    *Abstract* \
+  //set align(center)
+  par(justify: true, leading: 1.2em)[
+    #set text(spacing: 80%)
+    #text(weight: "bold", size: 13pt)[Abstract] \
+    #v(1em)
     #abstract
   ]
   pagebreak()
@@ -182,7 +192,7 @@
     header = context {
       let sel = query(selector(heading.where(level: 1)).before(here()))
       return [#numberingH(sel.last()) #sel.last().body]
-    } 
+    }
   } else {
     header = context {
       let sel = query(selector(heading.where(level: 1)).before(here()))
@@ -194,12 +204,34 @@
     #text(size: 10pt, style: "italic")[#header]
   ])
 
+  // Default for main text
+  set par(first-line-indent: 2em, leading: 1.2em)
+  set text(spacing: 80%) 
+  
   // Defaults for figures and blocks
-  show figure.caption: set text(9pt, spacing: 2pt)
+  show figure.caption: set text(9pt, spacing: 90%)
+  show figure.caption: set align(left)
   show figure: set block(inset: (top: 0.8em, bottom: 2em))
   set figure(placement: auto, numbering: "1.1")
 
-  set block(inset: 1em)
+  set block(inset: (top: 0.5em, bottom: 1em, left: 0.8em, right: 0.8em))
 
   chapter
 }
+
+// Define a fucntion to cite inline
+// https://forum.typst.app/t/how-can-i-remove-parens-around-specific-citations/818
+#let no-paren-cite(cites) = {
+  show regex("\(|\)"): none
+  for c in cites {
+    cite(c, form: "normal")
+  }
+}
+
+  #let in-outline = state("in-outline", false)
+  #show outline: it => {
+    in-outline.update(true)
+    it
+    in-outline.update(false)
+  }
+  #let flex-caption(long, short) = context if in-outline.get() { short } else { long }
