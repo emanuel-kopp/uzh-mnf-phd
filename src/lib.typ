@@ -76,8 +76,8 @@
   v(2fr)
   pagebreak()
 
-  if quote != none {align(horizon)[#text(weight: "bold")[#quote]]}
-  if quote_author != none {align(horizon)[#text(style: "italic")[#quote_author]]} 
+  if quote != none {align(horizon)[#quote]}
+  if quote_author != none {align(horizon)[#quote_author]} 
 
   // Set heading numbering
   set heading(numbering: "1.")
