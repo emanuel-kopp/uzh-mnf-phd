@@ -80,13 +80,41 @@
   if quote_author != none {align(horizon)[#quote_author]} 
 
   // Set heading numbering
-  set heading(numbering: "1.")
+  let heading-numbering = "1.1"
+  set heading(numbering: heading-numbering)
 
-  // Defining headings
+  // Defining headings (thanks to https://forum.typst.app/t/how-do-i-automatically-label-my-headings-figures-equations/400/2)
+  let to-string(content) = {
+    if content.has("text") and type(content.text) == "string" {
+      content.text
+    } else if content.has("children") {
+      content.children.map(to-string).join("")
+    } else if content.has("body") {
+      to-string(content.body)
+    } else if content == [ ] {
+      " "
+    }
+  }
   show heading.where(level: 1): it => {
-    pagebreak()
-    it
-    v(1em)
+    let k1 = to-string(it).replace(" ", "-").replace(regex("[^a-zA-Z0-9 -]"), "").split("-").len()
+    let key = if k1 >= 2 {
+      let first_word = lower(to-string(it).replace(" ", "-").replace(regex("[^a-zA-Z0-9 -]"), "")).split("-").first()
+      let last_word = lower(to-string(it).replace(" ", "-").replace(regex("[^a-zA-Z0-9 -]"), "")).split("-").last()
+      to-string(text()[#first_word#last_word])
+    } else {
+      lower(to-string(it).replace(" ", "-").replace(regex("[^a-zA-Z0-9 -]"), "")).split("-").first()
+    }
+    return [
+      #pagebreak()
+      #it
+      #v(-1em)
+      #figure(
+        kind: "heading",
+        numbering: (..numbers) => numbering(heading-numbering, ..(counter(heading).get())),
+        supplement: "Chapter",
+      )[]
+      #label(key)
+    ]
   }
 
   // Main body
