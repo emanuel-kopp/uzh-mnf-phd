@@ -17,10 +17,10 @@
                                     // Swiss: place of citizenship and canton [e.g. von Uster ZH]
   land: "Schweiz",                  // Set to "Schweiz" by default, change for non-swiss citizens
   examinators: (                    // (list other members with their academic titles, first name(s) written out in full, 
-    "Prof. Dr. Head of Commit",     // Head of committe
+    "Prof. Dr. Head of Committee",     // Head of committe
     "Dr. First P. Inv",             // Your PI (if not same person as head of committee)
-    "Prof. Dr. Other Memebr",
-    "Prof. Dr. Last Menber",
+    "Prof. Dr. Other Member",
+    "Prof. Dr. Last Member",
   ),
   PI_is_head: true,                 // Define if your head of committee is also your first PI
   date: "2025",                      // Year of submission

@@ -1,6 +1,6 @@
 #import "@local/uzh-mnf-phd:0.1.0": *
 
-#show: chapter.with(
+#show: paper-chapter.with(
   title: text()[Title of your first chapter, of which maybe a part must be _italic_],
   authors: (
     (name: "First Author", affiliation: [1, 2]),
@@ -18,9 +18,10 @@
 )
 
 == Introduction
+
 Cite like this: `@Author_2023`, or `@Author_2023@Author_2023` for multiple citations (without backticks).
 Change citation style in the `main.typ` file.
-If you want to cite without parentheses, use `#no-paren-cite((<Author_2023>,))`. Note the double parentheses and the commas, this is because for now the function only takes an array. This is useful when citing multiple works like `#no-paren-cite((<A>, <B>))`
+If you want to cite without parentheses, use `#no-paren-cite((<Author_2023>,))`. Note the double parentheses and the commas, this is because for now the function only takes an array. This is useful when citing multiple works like `#no-paren-cite((<A>, <B>))`.
 
 Like this you can reference your figures: @fig:fig_exampl
 

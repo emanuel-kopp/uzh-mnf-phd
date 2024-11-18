@@ -1,6 +1,6 @@
 #import "@local/uzh-mnf-phd:0.1.0": *
 
-#show: chapter.with(
+#show: paper-chapter.with(
   title: text()[Title of your first chapter, of which maybe a part must be _italic_],
   authors: (
     (name: "First Author", affiliation: [1, 2]),
