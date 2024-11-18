@@ -114,16 +114,19 @@
   let flex-caption(long, short) = context if in-outline.get() { short } else { long }
   outline(depth: 2, indent: auto)
   // outline(target: figure)
+  // 
+  show figure.where(kind: table): set figure.caption(position: top)
 
   // Show list of figures and tables
-  i-figured.outline()
+  i-figured.outline(target-kind: image)
+  i-figured.outline(target-kind: table, title: [List of Tables])
 
   body
 }
 
-// Define function for chapters
+// Define function for chapters where the content is a paper
 
-#let chapter(
+#let paper-chapter(
   title: none,
   authors: (),
   affiliations: (),
@@ -214,7 +217,7 @@
   set text(spacing: 80%) 
   
   // Defaults for figures and blocks
-  show figure.caption: set text(9pt, spacing: 90%)
+  show figure.caption: set text(10pt, spacing: 90%)
   show figure.caption: set align(left)
   show figure: set block(inset: (top: 0.8em, bottom: 2em))
   set figure(placement: auto, numbering: "1.1")
@@ -222,6 +225,66 @@
   set block(inset: (top: 0.5em, bottom: 1em, left: 0.8em, right: 0.8em))
 
   chapter
+}
+
+
+// Define function for chapters where the content is frame text
+
+#let frame-text(
+  title: none,
+  header: none,
+  body,
+) = {
+
+  // Write title
+  heading(title)
+
+  show heading.where(level: 2): it => {
+    v(1em)
+    it
+    v(1em)
+  }
+
+  show heading.where(level: 3): it => {
+    v(1em)
+    it
+    v(1em)
+  }
+
+  // Write header
+  let numberingH(c)={
+    return numbering(c.numbering,..counter(heading.where(level: 1)).at(c.location()))
+  }
+
+  if header == none {
+    header = context {
+      let sel = query(selector(heading.where(level: 1)).before(here()))
+      return [#numberingH(sel.last()) #sel.last().body]
+    }
+  } else {
+    header = context {
+      let sel = query(selector(heading.where(level: 1)).before(here()))
+      return [#numberingH(sel.last()) #header]
+    }
+  }
+
+  set page(header: align(right)[
+    #text(size: 10pt, style: "italic")[#header]
+  ])
+
+  // Default for main text
+  set par(first-line-indent: 2em, leading: 1.2em)
+  set text(spacing: 80%) 
+  
+  // Defaults for figures and blocks
+  show figure.caption: set text(10pt, spacing: 90%)
+  show figure.caption: set align(left)
+  show figure: set block(inset: (top: 0.8em, bottom: 2em))
+  set figure(placement: auto, numbering: "1.1")
+
+  set block(inset: (top: 0.5em, bottom: 1em, left: 0.8em, right: 0.8em))
+
+  body
 }
 
 // Define a fucntion to cite inline
