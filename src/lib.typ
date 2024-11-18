@@ -85,7 +85,6 @@
   // Defining headings
   show heading.where(level: 1): it => {
     pagebreak()
-    set text(weight: "bold", size: 13pt)
     it
     v(1em)
   }
@@ -173,7 +172,7 @@
     #v(1em)
     #abstract
   ]
-  pagebreak()
+  //pagebreak()
 
   show heading.where(level: 2): it => {
     v(1em)
@@ -236,6 +235,34 @@
   body,
 ) = {
 
+    // Write header
+  let numberingH(c)={
+    return numbering(c.numbering,..counter(heading.where(level: 1)).at(c.location()))
+  }
+
+  if header == none {
+    header = context {
+        let h = query(heading.where(level: 1).after(here()))
+          .filter(h => h.location().page() == here().page())
+          .at(0, default: none)
+      if h != none {
+        return []
+      } else if h == none {
+        let sel = query(selector(heading.where(level: 1)).before(here()))
+        return [#numberingH(sel.last()) #sel.last().body]
+      }
+    }
+  } else {
+    header = context {
+      let sel = query(selector(heading.where(level: 1)).before(here()))
+      return [#numberingH(sel.last()) #header]
+    }
+  }
+
+  set page(header: align(right)[
+    #text(size: 10pt, style: "italic")[#header]
+  ])
+  
   // Write title
   heading(title)
 
@@ -250,27 +277,6 @@
     it
     v(1em)
   }
-
-  // Write header
-  let numberingH(c)={
-    return numbering(c.numbering,..counter(heading.where(level: 1)).at(c.location()))
-  }
-
-  if header == none {
-    header = context {
-      let sel = query(selector(heading.where(level: 1)).before(here()))
-      return [#numberingH(sel.last()) #sel.last().body]
-    }
-  } else {
-    header = context {
-      let sel = query(selector(heading.where(level: 1)).before(here()))
-      return [#numberingH(sel.last()) #header]
-    }
-  }
-
-  set page(header: align(right)[
-    #text(size: 10pt, style: "italic")[#header]
-  ])
 
   // Default for main text
   set par(first-line-indent: 2em, leading: 1.2em)
