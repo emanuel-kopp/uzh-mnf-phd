@@ -1,7 +1,7 @@
 #import "@local/uzh-mnf-phd:0.1.0": *
 
 #show: paper-chapter.with(
-  title: text()[Title of your first chapter, of which maybe a part must be _italic_],
+  title: "Second chapter of your thesis",
   authors: (
     (name: "First Author", affiliation: [1, 2]),
     (name: "Second Author", affiliation: 3),

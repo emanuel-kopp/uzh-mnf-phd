@@ -1,7 +1,7 @@
 #import "@local/uzh-mnf-phd:0.1.0": *
 
 #show: paper-chapter.with(
-  title: text()[Title of your first chapter, of which maybe a part must be _italic_],
+  title: text()[The Title of your first chapter, of which maybe a part must be _italic_],
   authors: (
     (name: "First Author", affiliation: [1, 2]),
     (name: "Second Author", affiliation: 3),
@@ -24,6 +24,8 @@ Change citation style in the `main.typ` file.
 If you want to cite without parentheses, use `#no-paren-cite((<Author_2023>,))`. Note the double parentheses and the commas, this is because for now the function only takes an array. This is useful when citing multiple works like `#no-paren-cite((<A>, <B>))`.
 
 Like this you can reference your figures: @fig:fig_exampl
+
+To refer to chapters, the label is automatically set as the first and the last word of your title. Example: refer to @theitalic using `@theitalic` and to @secondthesis using `@secondthesis`.
 
 #line(length: 100%)
 
