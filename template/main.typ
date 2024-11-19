@@ -24,8 +24,7 @@
   ),
   PI_is_head: true,                 // Define if your head of committee is also your first PI
   date: "2025",                      // Year of submission
-  quote: text(weight: "bold")[You shall not pass!],      // You can add a quote (or a dedication)
-  quote_author: text()[Gandalf on the bridge in Moria, _Lord of the Rings_] // Style your quotes with text() options
+  quote: text()[*You shall not pass!* #linebreak() Gandalf on the bridge in Moria, _The Lord of the Rings_],      // You can add a quote (or a dedication)
 )
 
 // Include the separate files here
