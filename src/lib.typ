@@ -12,7 +12,6 @@
   land: "",
   PI_is_head: true,
   quote: none,
-  quote_author: none,
   body,
 ) = {
   // Set the document's basic properties.
@@ -77,10 +76,9 @@
   pagebreak()
 
   if quote != none {align(horizon)[#quote]}
-  if quote_author != none {align(horizon)[#quote_author]} 
 
   // Set heading numbering
-  let heading-numbering = "1.1"
+  let heading-numbering = "1."
   set heading(numbering: heading-numbering)
 
   // Defining headings (thanks to https://forum.typst.app/t/how-do-i-automatically-label-my-headings-figures-equations/400/2)
@@ -107,13 +105,14 @@
     return [
       #pagebreak()
       #it
-      #v(-1em)
+      //#v(-1em)
       #figure(
         kind: "heading",
         numbering: (..numbers) => numbering(heading-numbering, ..(counter(heading).get())),
         supplement: "Chapter",
       )[]
       #label(key)
+      //#v(1em)
     ]
   }
 
