@@ -108,7 +108,7 @@
       //#v(-1em)
       #figure(
         kind: "heading",
-        numbering: (..numbers) => numbering(heading-numbering, ..(counter(heading).get())),
+        numbering: (..numbers) => numbering("1", ..(counter(heading).get())),
         supplement: "Chapter",
       )[]
       #label(key)
