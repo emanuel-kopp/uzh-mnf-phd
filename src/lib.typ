@@ -108,7 +108,7 @@
       //#v(-1em)
       #figure(
         kind: "heading",
-        numbering: "1.1",
+        numbering: (..numbers) => numbering(heading-numbering, ..(counter(heading).get())),
         supplement: "Chapter",
       )[]
       #label(key)
@@ -128,7 +128,7 @@
 
 
   // Number bibliography
-  show bibliography: set heading(numbering: heading-numbering)
+  show bibliography: set heading(numbering: "1.")
 
   // Show table of contents
   let in-outline = state("in-outline", false)
