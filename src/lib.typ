@@ -142,6 +142,10 @@
   // outline(target: figure)
   // 
   show figure.where(kind: table): set figure.caption(position: top)
+  show table.cell: set text(size: 9pt)
+  show table.cell: set par(leading: 0.60em)
+  show figure: set block(breakable: true)
+
 
   // Show list of figures and tables
   i-figured.outline(target-kind: image)
@@ -204,13 +208,12 @@
   show heading.where(level: 2): it => {
     v(1em)
     it
-    v(1em)
   }
 
   show heading.where(level: 3): it => {
     v(1em)
+    set par(first-line-indent: 0em)
     it.body
-    v(1em)
   }
 
   set align(left)
@@ -246,7 +249,7 @@
   show figure.caption: set text(10pt, spacing: 90%)
   show figure.caption: set align(left)
   show figure: set block(inset: (top: 0.8em, bottom: 2em))
-  set figure(placement: auto, numbering: "1.1")
+  set figure(numbering: "1.1")
 
   set block(inset: (top: 0.5em, bottom: 1em, left: 0.8em, right: 0.8em))
 
