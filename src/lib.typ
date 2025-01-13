@@ -292,9 +292,10 @@
   set page(header: align(right)[
     #text(size: 10pt, style: "italic")[#header]
   ])
-  
+
   // Write title
   heading(title)
+  v(1em)
 
   show heading.where(level: 2): it => {
     v(1em)
