@@ -7,4 +7,4 @@ To start using this template, clone the entire repo to your local storage place 
 
 Then navigate to the folder where you want to store your thesis files and create a new project by typing `typst init @local/uzh-mnf-phd` in the terminal. This will create the basic folder structure and the basic files you will need to write your thesis. You can compile the `main.typ` file to see the output as PDF. More instructions are available in the files created when initiating a project. To adapt the template to your needs, simply modify the `lib.typ` file in the locally installed template.
 
-<img src="src/main.pdf" width="600">
+You can preview the temlate [here](src/main.pdf)
