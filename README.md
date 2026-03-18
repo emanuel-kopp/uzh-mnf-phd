@@ -1,6 +1,6 @@
 This is an **unofficial** template to write your PhD thesis at the Faculty of Science (MNF) of the University of Zurich using [Typst](https://typst.app/).
 
-To start using this template, clone the entire repo to your local storage place for Typst packages. This should be `{data-dir}/typst/packages/local/uzh-mnf-phd/1.0.0`, where `{data-dir}` is:
+To start using this template, clone the entire repo to your local storage place for Typst packages. This should be `{data-dir}/typst/packages/local/uzh-mnf-phd/0.1.0`, where `{data-dir}` is:
 - `$XDG_DATA_HOME` or `~/.local/share` on Linux
 - `~/Library/Application Support` on macOS
 - `%APPDATA%` on Windows
